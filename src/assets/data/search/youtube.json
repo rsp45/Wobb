@@ -183,6 +183,24 @@
                 },
                 "audience_source": "followers"
             }
+        },
+        {
+            "account": {
+                "user_profile": {
+                    "user_id": "UCRb_oJbDuQTCRJ9Q7pRxX-A",
+                    "username": "hitman45",
+                    "handle": "Hitman45",
+                    "url": "https://www.youtube.com/channel/UCRb_oJbDuQTCRJ9Q7pRxX-A",
+                    "picture": "https://imgp.sptds.icu/v2?imgp=youtube&w=480&h=480&fit=cover&r=horizontal&url=https%3A//yt3.googleusercontent.com/ytc/AKedOLT2M3RX5v9z6KXKpNvR1oxT4V3h0sYvIYJ5wQ%3D",
+                    "fullname": "Rohit Sharma",
+                    "is_verified": true,
+                    "followers": 8500000,
+                    "engagements": 125000,
+                    "engagement_rate": 0.014705882352941176,
+                    "avg_views": 450000
+                },
+                "audience_source": "followers"
+            }
         }
     ]
 }

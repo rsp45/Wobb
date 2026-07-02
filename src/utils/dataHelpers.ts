@@ -1,4 +1,4 @@
-import instagramData from "@/assets/data/search/instagram.json";
+﻿import instagramData from "@/assets/data/search/instagram.json";
 import youtubeData from "@/assets/data/search/youtube.json";
 import tiktokData from "@/assets/data/search/tiktok.json";
 import type { Platform, SearchData, UserProfileSummary } from "@/types";
@@ -22,12 +22,38 @@ export function filterProfiles(
   profiles: UserProfileSummary[],
   query: string
 ): UserProfileSummary[] {
-  if (!query) return profiles;
-  return profiles.filter((p) => {
-    const matchUsername = p.username.includes(query);
-    const matchFullname = p.fullname.toLowerCase().includes(query.toLowerCase());
-    return matchUsername || matchFullname;
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (!normalizedQuery) return profiles;
+
+  return profiles.filter((profile) => {
+    const searchableText = [
+      profile.username,
+      profile.fullname,
+      profile.handle,
+      profile.custom_name,
+      profile.platform,
+      profile.url,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return searchableText.includes(normalizedQuery);
   });
+}
+
+export function getProfileRoute(
+  profile: UserProfileSummary,
+  platform: Platform
+): string {
+  return `/profile/${encodeURIComponent(profile.username)}?platform=${platform}&id=${encodeURIComponent(
+    profile.user_id
+  )}`;
+}
+
+export function isPlatform(value: string | null): value is Platform {
+  return value === "instagram" || value === "youtube" || value === "tiktok";
 }
 
 export const PLATFORMS: Platform[] = ["instagram", "youtube", "tiktok"];
